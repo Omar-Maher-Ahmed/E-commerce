@@ -34,12 +34,10 @@ export const login = async (req, res, next) =>{
 export const profile = async (req, res) => {
   try {
     const userId = req.user.id;
-
     const user = await User.findById(userId).select("-password"); 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
     return res.status(200).json({ user });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
@@ -49,25 +47,34 @@ export const profile = async (req, res) => {
 export const update = async (req, res) => {
   try {
     const userId = req.user.id;
-
     const updatedData = {};
     if (req.body.name) updatedData.name = req.body.name;
     if (req.body.email) updatedData.email = req.body.email;
     if (req.body.password) {
       updatedData.password = await bcrypt.hash(req.body.password, 10);
     }
-
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { $set: updatedData },
       { new: true }
     );
-
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
-
     return res.status(200).json({ message: "User updated successfully", user: updatedUser });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const deleted = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const deleted = await User.findByIdAndDelete(userId);
+    if (!deleted) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
   }
