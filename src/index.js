@@ -1,8 +1,8 @@
 import express from 'express';
-import bootstrap from './src/modules/bootstrab.js';
+import "./src/bootstrap.js";
 const app = express();
 const port = 5000;
-
+bootstrap(app);
 
 
 app.listen(port, () => {
