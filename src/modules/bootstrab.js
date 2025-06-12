@@ -3,15 +3,15 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import userRouter from "./modules/user/user.router.js";
+import categoryRouter from "./modules/category/category.router.js";
 
 dotenv.config();
-
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/api/v1", categoryRouter);
 app.use("/api/v1/user", userRouter);
 app.use((err, req, res, next) => {
   console.error(err);
