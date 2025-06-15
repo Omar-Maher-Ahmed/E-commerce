@@ -2,8 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
-import userRouter from "./modules/user/user.router.js";
-import categoryRouter from "./modules/category/category.router.js";
+import userRouter from "./user/user.router.js";
+import categoryRouter from "./category/category.router.js";
+
+const bootstrap = () => {
 
 dotenv.config();
 const app = express();
@@ -32,3 +34,7 @@ mongoose
   .catch((error) => {
     console.error("Database connection failed:", error);
   });
+
+}
+
+  export default bootstrap;

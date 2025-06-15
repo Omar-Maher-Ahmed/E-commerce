@@ -1,5 +1,6 @@
 import express from 'express';
-import "./src/bootstrap.js";
+import bootstrap from './src/modules/bootstrab.js';
+
 const app = express();
 const port = 5000;
 bootstrap(app);

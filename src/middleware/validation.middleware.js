@@ -1,4 +1,4 @@
-export const validation = (schema) => {
+const validation = (schema) => {
   return (req, res, next) => {
     const validationResult = schema.body?.validate(req.body);
     if (validationResult?.error) {
@@ -12,7 +12,7 @@ export const validation = (schema) => {
 };
 
 
-export const validate = (schema) => {
+const validate = (schema) => {
   return (req, res, next) => {
     const validationResult = schema.body.validate(req.body, { abortEarly: false });
     if (validationResult.error) {
@@ -23,3 +23,5 @@ export const validate = (schema) => {
     next();
   };
 };
+
+export default { validation, validate };
