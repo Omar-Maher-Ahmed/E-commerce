@@ -19,3 +19,19 @@ export const getAllSubcategories = async (req, res) => {
   const subcategories = await Subcategory.find();
   res.json(subcategories);
 };
+
+export const updateSubcategory = async (req, res) => {
+  const { id } = await req.params;
+  const subcategory = await Subcategory.findByIdAndUpdate(id, req.body, {
+    new: true,
+  });
+  res.json(subcategory);
+  };
+
+  export const deleteSubcategory = async (req, res) => {
+  const { id } = await req.params;
+  const subcategory = await Subcategory.findByIdAndDelete(id);
+  res.json(subcategory);
+  };
+
+export default Subcategory 

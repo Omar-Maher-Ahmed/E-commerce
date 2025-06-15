@@ -10,3 +10,16 @@ export const validation = (schema) => {
     next();
   };
 };
+
+
+export const validate = (schema) => {
+  return (req, res, next) => {
+    const validationResult = schema.body.validate(req.body, { abortEarly: false });
+    if (validationResult.error) {
+      return res.status(400).json({
+        errors: validationResult.error.details.map((err) => err.message),
+      });
+    }
+    next();
+  };
+};

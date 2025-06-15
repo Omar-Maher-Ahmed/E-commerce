@@ -13,16 +13,11 @@
 
 import express from "express";
 import { createCategory, getCategories } from "./category.controller.js";
-import { createSubcategory, getSubcategoriesByCategory } from "./subcategory.controller.js";
 
 const router = express.Router();
 
 // Category routes
 router.post("/category", createCategory);
 router.get("/category", getCategories);
-
-// Subcategory routes
-router.post("/subcategory", createSubcategory);
-router.get("/subcategory/:categoryId", getSubcategoriesByCategory);
 
 export default router;
