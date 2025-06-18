@@ -1,15 +1,8 @@
-import Review from "../models/review.model.js";
+import {Review} from "../../../../DB/model/review.model.js";
 
 export const createReview = async (req, res) => {
   const { productId, rating, comment } = req.body;
-
-  const review = new Review({
-    userId: req.user._id,
-    productId,
-    rating,
-    comment
-  });
-
+  const review = new Review({userId: req.user._id,productId,rating,comment});
   await review.save();
   res.status(201).json(review);
 };

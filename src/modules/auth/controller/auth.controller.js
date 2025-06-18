@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../user/user.model.js';
-import { registerSchema, loginSchema } from './auth.validation.js';
+import User from "./../../../../DB/model/user.model.js"; // ./user.model.js
+import { registerSchema, loginSchema } from "../auth.validatoin.js"; // ./auth.validation.js
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
 

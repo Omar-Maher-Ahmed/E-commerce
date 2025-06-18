@@ -1,12 +1,11 @@
 import express from "express";
-import { createReview, getProductReviews } from "../controllers/review.controller.js";
-import { validate } from "../middlewares/validate.middleware.js";
-import { reviewValidation } from "../validations/review.validation.js";
-import { auth } from "../middlewares/auth.middleware.js";
+import { createReview, getProductReviews } from "./controller/reviews.controller.js";
+import reviewValidation from "../../middleware/validation.middleware.js"; 
+import authMiddleware from "../../middleware/auth.middleware.js"; 
 
 const router = express.Router();
 
-router.post("/", auth, validate(reviewValidation.create), createReview);
+router.post("/", authMiddleware, reviewValidation, createReview);
 router.get("/:productId", getProductReviews);
 
 export default router;

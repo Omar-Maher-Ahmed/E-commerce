@@ -1,5 +1,5 @@
-import * as db from '../../DB/dbMethods.js';
-import User from './user.model.js';
+import * as db from "../../../../DB/dbMethod.js";
+import User from "./../../../../DB/model/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
