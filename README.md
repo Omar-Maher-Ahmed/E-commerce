@@ -45,3 +45,41 @@ E-commerce/
 ├── validations/
 ├── bootstrap.js
 └── index.js
+
+---
+
+
+## 🧰 Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+- JWT Authentication
+- Bcrypt (Password Hashing)
+- Joi (Validation)
+
+---
+
+## 🔐 Authentication
+
+All protected routes require a valid JWT token in the `Authorization` header:
+
+---
+
+## ✅ Coming Soon
+
+- [x] order.validation.js
+- [ ] Brand CRUD
+- [ ] Review system for products
+- [ ] Admin Dashboard
+- [ ] Payment Gateway
+
+---
+
+## 📦 Run Locally
+
+```bash
+git clone https://github.com/your-username/E-commerce.git
+cd E-commerce
+npm install
+npm run dev
