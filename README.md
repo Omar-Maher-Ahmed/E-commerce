@@ -1,6 +1,6 @@
 # 🛒 E-Commerce API
 
-مشروع متجر إلكتروني باستخدام Node.js + Express + MongoDB، تم تصميمه بطريقة موديولية قابلة للتوسّع، بهدف التعلم والتطبيق العملي الكامل على RESTful API.
+An e-commerce project using Node.js + Express + MongoDB, designed in a modular, scalable way, with the goal of learning and fully implementing the RESTful API.
 
 ---
 
