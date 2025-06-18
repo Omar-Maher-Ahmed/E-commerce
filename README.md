@@ -30,4 +30,18 @@
 ---
 
 ## 📁 Project Structure
-
+E-commerce/
+├── config/
+├── middlewares/
+├── modules/
+│ ├── user/
+│ ├── category/
+│ ├── subcategory/
+│ ├── product/
+│ ├── cart/
+│ ├── order/
+│ ├── brand/
+│ └── review/
+├── validations/
+├── bootstrap.js
+└── index.js
