@@ -12,8 +12,9 @@ import reviewRoutes from "./reviews/reviews.router.js";
 import couponRoutes from "./coupon/coupon.router.js";
 import { orderValidation } from "./order/order.validation.js";
 import authRoutes from "./auth/auth.router.js";
+import { connectDB } from "../../DB/connection.js";
 
-
+await connectDB();
 const bootstrap = () => {
 dotenv.config();
 const app = express();
@@ -28,11 +29,11 @@ router.put("/:id/status", auth, validate(orderValidation.updateStatus), updateOr
 app.use("/api/v1/coupons", couponRoutes);
 app.use("/api/v1/brands", brandRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
-app.use("/api/v1", orderRouter);
-app.use("/api/v1", cartRouter);
-app.use("/api/v1", productRouter);
+app.use("/api/v1/order", orderRouter);
+app.use("/api/v1/cart", cartRouter);
+app.use("/api/v1/product", productRouter);
 app.use("/uploads", express.static("uploads"));
-app.use("/api/v1", categoryRouter);
+app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/user", userRouter);
 
 app.use((err, req, res, next) => {
@@ -43,9 +44,9 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 const DB_URI = process.env.DB_URI || "mongodb://127.0.0.1:27017/ecommerce";
 
-mongoose
-  .connect(DB_URI)
-  .then(() => {
+
+
+mongoose.connect(DB_URI).then(() => {
     console.log("Connected to MongoDB");
     app.listen(PORT, () =>
       console.log(`Server running on http://127.0.0.1:${PORT}`)

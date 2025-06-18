@@ -1,4 +1,5 @@
-import User from "../../../../DB/model/user.model.js";
+import * as db from '../../DB/dbMethods.js';
+import User from './user.model.js';
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -78,4 +79,9 @@ export const deleted = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
   }
+};
+
+export const getAllUsers = async (req, res) => {
+  const users = await db.getAll(User);
+  res.json(users);
 };
