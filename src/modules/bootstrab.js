@@ -13,19 +13,22 @@ import couponRoutes from "./coupon/coupon.router.js";
 import { orderValidation } from "./order/order.validation.js";
 import authRoutes from "./auth/auth.router.js";
 import { connectDB } from "../../DB/connection.js";
+import authMiddleware from "../middleware/auth.middleware.js";
+import validate from "../middleware/validation.middleware.js";
+
 
 await connectDB();
-const bootstrap = () => {
-dotenv.config();
-const app = express();
 
+const bootstrap = () => {
+const app = express();
+dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRoutes);
-router.post("/", auth, validate(orderValidation.place), placeOrder);
-router.put("/:id/status", auth, validate(orderValidation.updateStatus), updateOrderStatus);
+app.post("/", authMiddleware, validate(orderValidation.place));
+app.put("/:id/status", authMiddleware, validate(orderValidation.updateStatus));
 app.use("/api/v1/coupons", couponRoutes);
 app.use("/api/v1/brands", brandRoutes);
 app.use("/api/v1/reviews", reviewRoutes);
