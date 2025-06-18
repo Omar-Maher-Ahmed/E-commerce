@@ -66,16 +66,6 @@ All protected routes require a valid JWT token in the `Authorization` header:
 
 ---
 
-## ✅ Coming Soon
-
-- [x] order.validation.js
-- [ ] Brand CRUD
-- [ ] Review system for products
-- [ ] Admin Dashboard
-- [ ] Payment Gateway
-
----
-
 ## 📦 Run Locally
 
 ```bash
