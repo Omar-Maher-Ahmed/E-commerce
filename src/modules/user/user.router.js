@@ -11,6 +11,6 @@ router.post("/login", validation(loginValidation), login);
 router.get("/profile", authMiddleware, profile);
 router.get("/getAllUsers", authMiddleware, getAllUsers);
 router.put("/update", authMiddleware, validation(registerValidation), update);
-router.delete("/delete", deleted);
+router.delete("/delete",authMiddleware, deleted);
 
 export default router;
