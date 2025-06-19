@@ -19,48 +19,44 @@ import validate from "../middleware/validation.middleware.js";
 
 await connectDB();
 
-const bootstrap = () => {
-const app = express();
-dotenv.config();
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const bootstrap = (app) => {
+  // const app = express();
+  dotenv.config();
+  app.use(cors());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/auth', authRoutes);
-app.post("/", authMiddleware, validate(orderValidation.place));
-app.put("/:id/status", authMiddleware, validate(orderValidation.updateStatus));
-app.use("/api/v1/coupons", couponRoutes);
-app.use("/api/v1/brands", brandRoutes);
-app.use("/api/v1/reviews", reviewRoutes);
-app.use("/api/v1/order", orderRouter);
-app.use("/api/v1/cart", cartRouter);
-app.use("/api/v1/product", productRouter);
-app.use("/uploads", express.static("uploads"));
-app.use("/api/v1/category", categoryRouter);
-app.use("/api/v1/user", userRouter);
+  app.use('/api/auth', authRoutes);
+  app.use("/api/coupons", couponRoutes);
+  app.use("/api/brands", brandRoutes);
+  app.use("/api/reviews", reviewRoutes);
+  app.use("/api/order", orderRouter);
+  app.use("/api/cart", cartRouter);
+  app.use("/api/product", productRouter);
+  app.use("/uploads", express.static("uploads"));
+  app.use("/api/category", categoryRouter);
+  app.use("/api/user", userRouter);
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  return res.status(500).json({ message: "Internal Server Error" });
-});
+  app.use((err, req, res, next) => {
+    console.error(err);
+    return res.status(500).json({ message: "Internal Server Error" });
+  });
 
-const PORT = process.env.PORT || 5000;
-const DB_URI = process.env.DB_URI || "mongodb://127.0.0.1:27017/ecommerce";
+  const PORT = process.env.PORT || 5000;
+  const DB_URI = process.env.DB_URI || "mongodb://127.0.0.1:27017/ecommerce";
 
-
-
-mongoose.connect(DB_URI).then(() => {
+  mongoose.connect(DB_URI).then(() => {
     console.log("Connected to MongoDB");
     app.listen(PORT, () =>
       console.log(`Server running on http://127.0.0.1:${PORT}`)
     );
   })
-  .catch((error) => {
-    console.error("Database connection failed:", error);
-  });
+    .catch((error) => {
+      console.error("Database connection failed:", error);
+    });
 
 }
 
-  export default bootstrap;
+export default bootstrap;
 
-// the first time to run project 
+// the first time to run project  

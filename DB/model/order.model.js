@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema(
           ref: "Product",
         },
         quantity: Number,
-        price: Number, // snapshot of product price at order time
+        price: Number, 
       },
     ],
     totalPrice: {
