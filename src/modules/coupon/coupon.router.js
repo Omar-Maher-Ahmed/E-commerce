@@ -5,9 +5,9 @@ import { couponValidation } from "./coupon.validation.js";
 
 const router = express.Router();
 
-router.post("/", validate(couponValidation.create), createCoupon);
-router.get("/", getCoupons);
-router.put("/:id", validate(couponValidation.update), updateCoupon);
-router.delete("/:id", deleteCoupon);
+router.post("/createCoupon", validate(couponValidation.create), createCoupon);
+router.get("/getCoupons", getCoupons);
+router.put("/updateCoupon/:id", validate(couponValidation.update), updateCoupon);
+router.delete("/deleteCoupon/:id", deleteCoupon);
 
 export default router;

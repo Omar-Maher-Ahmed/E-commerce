@@ -4,9 +4,9 @@ import validate from "../../middleware/validation.middleware.js"; //../middlewar
 
 const router = express.Router();
 
-router.post("/", validate, createBrand);
-router.get("/", getBrands);
-router.put("/:id", validate, updateBrand);
-router.delete("/:id", deleteBrand);
+router.post("/createBrand", validate, createBrand);
+router.get("/getBrands", getBrands);
+router.put("/updateBrand/:id", validate, updateBrand);
+router.delete("/deleteBrand/:id", deleteBrand);
 
 export default router;

@@ -4,9 +4,9 @@ import validate from "../../middleware/validation.middleware.js";
 
 const router = express.Router();
 
-router.post("/category", validate, Category.createCategory);
-router.get("/category", validate, Category.getCategories);
-router.put("/category/:id", validate, Category.updateCategory);
-router.delete("/category/:id", validate, Category.deleteCategory);
+router.post("/createCategory", validate, Category.createCategory);
+router.get("/getCategories", validate, Category.getCategories);
+router.put("/updateCategory/:id", validate, Category.updateCategory);
+router.delete("/deleteCategory/:id", validate, Category.deleteCategory);
 
 export default router;
