@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import userRouter from "./user/user.router.js";
@@ -20,8 +19,7 @@ import validate from "../middleware/validation.middleware.js";
 await connectDB();
 
 const bootstrap = (app) => {
-  // const app = express();
-  dotenv.config();
+  
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
