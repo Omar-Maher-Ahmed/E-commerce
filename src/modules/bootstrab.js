@@ -1,3 +1,4 @@
+import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./user/user.router.js";
 import categoryRouter from "./category/category.router.js";
@@ -7,10 +8,8 @@ import orderRouter from "./order/order.router.js";
 import brandRoutes from "./brand/brand.router.js";
 import reviewRoutes from "./reviews/reviews.router.js";
 import couponRoutes from "./coupon/coupon.router.js";
-import { orderValidation } from "./order/order.validation.js";
 import authRoutes from "./auth/auth.router.js";
 import { connectDB } from "../../DB/connection.js";
-import authMiddleware from "../middleware/auth.middleware.js";
 
 await connectDB();
 

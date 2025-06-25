@@ -28,14 +28,20 @@ export const getProduct = async (req, res) => {
 
 // Update Product
 export const updateProduct = async (req, res) => {
-  const image = req.file?.filename;
-  const updatedData = image ? { ...req.body, image } : req.body;
-
-  const product = await Product.findByIdAndUpdate(req.params.id, updatedData, {
-    new: true,
-  });
-  if (!product) return res.status(404).json({ message: "Not Found" });
-  res.json(product);
+  try {
+    const image = req.file?.filename;
+    const updatedData = image ? { ...req.body, image } : req.body;
+    const product = await Product.findByIdAndUpdate(req.params.id, updatedData, {
+      new: true,
+    });
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    return res.status(200).json(product);
+  } catch (err) {
+    console.error("❌ Error updating product:", err);
+    return res.status(500).json({ message: "Internal Server Error", error: err.message });
+  }
 };
 
 // Delete Product
