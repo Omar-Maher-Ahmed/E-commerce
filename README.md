@@ -69,7 +69,7 @@ All protected routes require a valid JWT token in the `Authorization` header:
 ## 📦 Run Locally
 
 ```bash
-git clone https://github.com/Omar-Maher-Ahmed/E-commerce
+git clone https://github.com/Omar-Maher-Ahmed/E-commerce-NodeJS.git
 cd E-commerce
 npm install
 npm run dev
